@@ -6,10 +6,9 @@ Exemplo de como consumir a API REST do Wordpress. Neste exemplo, utilizamos o **
 ---
 ### #comoFaz?
 - Este projeto usa o [Ionic Framework](http://ionicframework.com), o melhor jeito de rodar é assim:
-1. Com o [NodeJS](http://nodejs.org/) instalado e funcionando, rode:
-    `npm install - g ionic`
-
-    `ionic start NomeDoApp tabs`
+1. Com o [NodeJS](http://nodejs.org/) instalado e funcionando, rode: 
+`npm install - g ionic`
+`ionic start NomeDoApp tabs`
 
 2. Depois, substitua a /www gerada pelos comandos acima, pela www deste repo
 
