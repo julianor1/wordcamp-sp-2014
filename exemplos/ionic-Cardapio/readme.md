@@ -17,9 +17,14 @@ Exemplo de como consumir a API REST do Wordpress. Neste exemplo, utilizamos o **
 > Atenção: Caso o servidor da API não seja localhost, pode precisar ter o CORS ativado. Basta baixar [AQUI](https://github.com/thenbrent/WP-API-CORS) e extrair para `wp-content/plugins`
 
 ---
-### O que tem?
-No `www/js/services.js` inserimos 2 services importantes: **Config** e **Pratos**
+### O que tem? No `www/js/services.js`: **Config** e **Pratos**
 
+#### Config
+O service `Config` é uma `.factory()` que retorna a variável com a nossa URL base. Usamos `Config.baseUrl` quando queremos puxar nossa URL base da API. 
+**Você deve configurar sua aURL base no arquivo `/www/js/services.js`**
+
+#### Pratos
+O service `Pratos` é uma `.factory()` que retorna o `$resource()` com base na nossa `baseUrl`. Usando este service, fazemos as requisições para listar todos e para puxar o single item, também. Estas requisições são realizadasa no `www/js/controller.js`
 
 No `www/js/controllers.js` criamos a lógica
 E alguns Views especificos também
