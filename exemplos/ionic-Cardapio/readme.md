@@ -23,7 +23,7 @@ Exemplo de como consumir a API REST do Wordpress. Neste exemplo, utilizamos o **
 O service `Config` é uma `.factory()` que retorna a variável com a nossa URL base. Usamos `Config.baseUrl` quando queremos puxar nossa URL base da API. 
 **Você deve configurar sua aURL base no arquivo `/www/js/services.js`**
 ``` Javascript
-.factory('Config', function(){ //FACTORY DE CONFIGURAÇÃO. baseURL é a URL da sua API. postType é o slug do seu post Type
+.factory('Config', function(){ 
   var Config = {
     baseUrl: "http://crepedeliciabrasil.com.br/site/wp-json",
     postType: "crepe"
@@ -34,6 +34,14 @@ O service `Config` é uma `.factory()` que retorna a variável com a nossa URL b
 
 #### Pratos
 O service `Pratos` é uma `.factory()` que retorna o `$resource()` com base na nossa `baseUrl`. Usando este service, fazemos as requisições para listar todos e para puxar o single item, também. Estas requisições são realizadasa no `www/js/controller.js`
+
+``` Javascript
+.factory('Pratos', function(Config, $resource){
+return $resource(Config.baseUrl+'/posts/:id');
+});
+```
+
+
 
 No `www/js/controllers.js` criamos a lógica
 E alguns Views especificos também
