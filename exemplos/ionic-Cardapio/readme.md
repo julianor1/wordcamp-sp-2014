@@ -25,7 +25,7 @@ O service `Config` é uma `.factory()` que retorna a variável com a nossa URL b
 ``` Javascript
 .factory('Config', function(){ 
   var Config = {
-    baseUrl: "http://crepedeliciabrasil.com.br/site/wp-json",
+    baseUrl: "http://suaURL.com.br/pastaDoWp/wp-json",
     postType: "crepe"
   }
   return Config;
