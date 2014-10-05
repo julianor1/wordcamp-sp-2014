@@ -1,8 +1,9 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, Pratos) {
-	Pratos.query({type: 'boletins'}, function(data) {
+.controller('DashCtrl', function($scope, Pratos, Config) {
+	Pratos.query({type: Config.postType}, function(data) {
     $scope.Pratos = data;
+    console.log(data);
   });
 })
 

@@ -1,6 +1,22 @@
 <ion-view title="Dashboard">
   <ion-content class="padding">
-    <h1>Dash</h1>
-    {{Pratos}}
+    <div ng-repeat="prato in Pratos">
+		
+		<div class="list card">
+		  <div class="item item-avatar">
+		    <img src="avatar.jpg">
+		    <h2>{{prato.title}}</h2>
+		    <p>{{prato['custom-fields']['wpcf-crepe-ingredientes'][0]}}</p>
+		  </div>
+		  <div class="item item-image">
+		   	<img src="{{prato['custom-fields']['wpcf-crepe-foto'][0]}}" alt=""> 
+		  </div>
+		  <a class="item item-icon-left assertive" href="#">
+		    <i class="icon ion-music-note"></i>
+		    Start listening
+		  </a>
+		</div>
+		
+    </div>
   </ion-content>
 </ion-view>

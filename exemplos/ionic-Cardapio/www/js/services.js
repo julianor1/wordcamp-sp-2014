@@ -24,9 +24,10 @@ angular.module('starter.services', [])
     }
   }
 })
-.factory('Config', function(){
+.factory('Config', function(){ //FACTORY DE CONFIGURAÇÃO. baseURL é a URL da sua API. postType é o slug do seu post Type
   var Config = {
-    baseUrl: "http://rcdev.com.br/palestra/wp-json"
+    baseUrl: "http://crepedeliciabrasil.com.br/site/wp-json",
+    postType: "crepe"
   }
   return Config;
 })
