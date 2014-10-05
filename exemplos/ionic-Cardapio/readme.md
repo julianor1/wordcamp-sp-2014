@@ -43,5 +43,13 @@ return $resource(Config.baseUrl+'/posts/:id');
 
 
 
-No `www/js/controllers.js` criamos a lógica
-E alguns Views especificos também
+No `www/js/controllers.js` criamos a lógica. No caso dos `Pratos`, listar todos eles se dá da seguinte forma:
+
+(Dentro do controllers.js)
+``` Javascript
+Pratos.query({type: Config.postType}, function(data) {
+    $scope.Pratos = data;
+    console.log(data);
+  });
+```
+`type: Config.postType` adicionara `&type= SEU POST TYPE ` à url
