@@ -1,15 +1,15 @@
 <ion-view title="Dashboard">
   <ion-content class="padding">
+  <button ng-click="autenticar()">Autenticar</button>
     <div ng-repeat="prato in Pratos">
 		
 		<div class="list card">
 		  <div class="item item-avatar">
-		    <img src="avatar.jpg">
+		    <img src="{{prato.author.avatar}}">
 		    <h2>{{prato.title}}</h2>
-		    <p>{{prato['custom-fields']['wpcf-crepe-ingredientes'][0]}}</p>
 		  </div>
 		  <div class="item item-image">
-		   	<img src="{{prato['custom-fields']['wpcf-crepe-foto'][0]}}" alt=""> 
+		   	<img src="http://placehold.it/600x300" alt=""> 
 		  </div>
 		  <a class="item item-icon-left assertive" href="#">
 		    <i class="icon ion-music-note"></i>

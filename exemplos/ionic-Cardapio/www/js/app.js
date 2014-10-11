@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngResource'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngResource','satellizer'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -35,9 +35,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       abstract: true,
       templateUrl: "templates/tabs.html"
     })
-
-    // Each tab has its own nav history stack:
-
     .state('tab.dash', {
       url: '/dash',
       views: {
@@ -75,10 +72,29 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           controller: 'AccountCtrl'
         }
       }
+    })
+    .state('tab.login', {
+      url: '/login',
+      views: {
+        'tab-login': {
+          templateUrl: 'templates/tab-login.html',
+          controller: 'LoginCtrl'
+        }
+      }
     });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
 
+})
+.config(function($authProvider){
+     $authProvider.oauth1({
+      name: 'wp-api-oauth',
+      url: '#/tab/login',
+      redirectUri: window.location.origin,
+      oauth_token:"0JL3bnA59iRX5u6e71bJ2CIn",
+      oauth_verifier:"VwGEXSkPnyK9xwKFqUGL7FIlUezLuAeWyBoNt3z3MCEql3XN",
+      authorizationEndpoint: 'https://rcdev.com.br/palestra/oauth1/authorize',
+    });
 });
 
