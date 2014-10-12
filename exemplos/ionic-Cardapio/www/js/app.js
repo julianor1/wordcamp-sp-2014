@@ -92,8 +92,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       name: 'wp-api-oauth',
       url: '#/tab/login',
       redirectUri: window.location.origin,
-      oauth_token:"0JL3bnA59iRX5u6e71bJ2CIn",
-      oauth_verifier:"VwGEXSkPnyK9xwKFqUGL7FIlUezLuAeWyBoNt3z3MCEql3XN",
+      oauth_token:"7dYN1IUr6ci8KxkTadp9HSvv",
+      oauth_verifier:"jjW3E6DHLpHkokMIbFsM5cf2",
       authorizationEndpoint: 'https://rcdev.com.br/palestra/oauth1/authorize',
     });
 });
