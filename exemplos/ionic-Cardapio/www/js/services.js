@@ -32,6 +32,7 @@ angular.module('starter.services', [])
     oAuth: {
       consumerSecret:"8hiRicniUiAjWq86W8H6e8wyDgJjmFf6BxhUgH4RYzhbDxu1",
       consumerKey: "5CisRX2107ra",
+      callback: "#/tab/dash"
     }
   }
   return Config;

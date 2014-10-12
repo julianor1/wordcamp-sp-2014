@@ -9,14 +9,20 @@ angular.module('starter.controllers', [])
     var timestampe = OAuth.timestamp();
     var nonce = OAuth.nonce(11);
     console.log('timestampe : ' + timestampe + ' nonce: '+ nonce);
-    message.parameters = {oauth_timestamp: timestampe, oauth_nonce: nonce, oauth_consumer_key: Config.oAuth.consumerKey, type: Config.postType};
+    message.parameters = {};
+    message.parameters.oauth_timestamp = timestampe;
+    message.parameters.oauth_nonce = nonce;
+    message.parameters.oauth_consumer_key = Config.oAuth.consumerKey;
+    message.parameters.oauth_callback = Config.oAuth.callback;
+    message.parameters.type = Config.postType;
    	var accessor = {}
     accessor.consumerSecret = Config.oAuth.consumerSecret;
     OAuth.SignatureMethod.sign(message, accessor);
-    console.log("Signature: ", OAuth.getParameter(message.parameters, "oauth_signature"));
-    console.log(data);
     console.log("signatureBaseString" , OAuth.SignatureMethod.getBaseString(message));
     console.log("normalizedParameters", OAuth.SignatureMethod.normalizeParameters(message.parameters));
+    console.log("Signature: ", OAuth.getParameter(message.parameters, "oauth_signature"));
+    console.log(data);
+    
   });
   $scope.autenticar = function(){
     console.log("autneticado: ",$auth.isAuthenticated());
@@ -30,8 +36,12 @@ angular.module('starter.controllers', [])
     message.action = "http://rcdev.com.br/palestra/oauth1/request";//url
     var timestampe = OAuth.timestamp();
     var nonce = OAuth.nonce(11);
-    console.log('timestamp : ' + timestampe + ' nonce: '+ nonce);
-    message.parameters = {oauth_timestamp: timestampe, oauth_nonce: nonce, oauth_consumer_key: Config.oAuth.consumerKey, type: Config.postType};
+    message.parameters = {};
+    message.parameters.oauth_timestamp = timestampe;
+    message.parameters.oauth_nonce = nonce;
+    message.parameters.oauth_consumer_key = Config.oAuth.consumerKey;
+    message.parameters.oauth_callback = Config.oAuth.callback;
+    message.parameters.type = Config.postType;
     var accessor = {}
     accessor.consumerSecret = Config.oAuth.consumerSecret;
     OAuth.SignatureMethod.sign(message, accessor);
@@ -46,7 +56,7 @@ angular.module('starter.controllers', [])
     var assina = OAuth.getParameter(message.parameters, "oauth_signature");
     $http({url: oAuthRequest+'/request',
           method: 'POST',
-          params: {oauth_timestamp: timestampe, oauth_nonce: nonce, oauth_consumer_key: Config.oAuth.consumerKey, type: Config.postType, oauth_signature: assina, oauth_signature_method: 'HMAC-SHA1'}
+          params: {oauth_timestamp: timestampe, oauth_nonce: nonce, oauth_consumer_key: Config.oAuth.consumerKey, type: Config.postType, oauth_signature: assina, oauth_signature_method: 'HMAC-SHA1', oauth_callback: Config.oAuth.callback}
         })
     .success(function(data){
       console.log("Sucesso", data);//peguei token!!! agora eh direcionar para
@@ -57,8 +67,8 @@ angular.module('starter.controllers', [])
     while(match = regex.exec(url)) {
         params[match[1]] = match[2];
     }
-      console.log("URL COM TOKEN: ", oAuthRequest+'/authorize?oauth_token='+params.oauth_token)
-      $window.location.href = oAuthRequest+'/authorize?oauth_token='+params.oauth_token;
+      console.log("URL COM TOKEN: ", oAuthRequest+'/authorize?oauth_token='+'&oauth_callback='+Config.oAuth.callback)
+      $window.location.href = oAuthRequest+'/authorize?oauth_token='+params.oauth_token+'&oauth_callback='+Config.oAuth.callback;
     }).error(function(data){
       console.error("ERRO!!!! ", data);
     });
